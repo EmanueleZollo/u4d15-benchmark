@@ -4,6 +4,7 @@ import com.sun.istack.Nullable;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.UUID;
 
 @Entity
@@ -19,10 +20,10 @@ public class Loan {
     @OneToOne
     @JoinColumn(name = "PublicationElement_isbn", nullable = false)
     private PublicationElement publicationElement; //
-    private LocalDate LoanStartingDate;
-    private LocalDate LoanDeadlineReturningDate;
+    private LocalDate loanStartingDate;
+    private LocalDate loanDeadlineReturningDate = setLoanDeadlineReturningDate(loanStartingDate);
     @Nullable
-    private LocalDate LoanReturningDate;
+    private LocalDate loanReturningDate;
 
 
     public Loan() {}
@@ -30,11 +31,11 @@ public class Loan {
     public Loan(User user, PublicationElement publicationElement, LocalDate loanStartingDate) {
         this.user = user;
         this.publicationElement = publicationElement;
-        LoanStartingDate = loanStartingDate;
+        loanStartingDate = loanStartingDate;
     }
 
     public Loan(LocalDate loanReturningDate) {
-        LoanReturningDate = loanReturningDate;
+        loanReturningDate = loanReturningDate;
     }
 
     public UUID getId() {
@@ -43,27 +44,24 @@ public class Loan {
 
 
     public LocalDate getLoanStartingDate() {
-        return LoanStartingDate;
+        return loanStartingDate;
     }
 
     public void setLoanStartingDate(LocalDate loanStartingDate) {
-        LoanStartingDate = loanStartingDate;
+        loanStartingDate = loanStartingDate;
     }
 
     public LocalDate getLoanDeadlineReturningDate() {
-        return LoanDeadlineReturningDate;
+        return loanDeadlineReturningDate;
     }
 
-    public void setLoanDeadlineReturningDate(LocalDate loanDeadlineReturningDate) {
-        LoanDeadlineReturningDate = loanDeadlineReturningDate;
-    }
 
     public LocalDate getLoanReturningDate() {
-        return LoanReturningDate;
+        return loanReturningDate;
     }
 
     public void setLoanReturningDate(LocalDate loanReturningDate) {
-        LoanReturningDate = loanReturningDate;
+        loanReturningDate = loanReturningDate;
     }
 
     public PublicationElement getPublicationElement() {
@@ -88,8 +86,14 @@ public class Loan {
                 "id=" + id +
                 ", user=" + user +
                 ", publicationElement=" + publicationElement +
-                ", LoanStartingDate=" + LoanStartingDate +
-                ", LoanDeadlineReturningDate=" + LoanDeadlineReturningDate +
+                ", LoanStartingDate=" + loanStartingDate +
+                ", LoanDeadlineReturningDate=" + loanDeadlineReturningDate +
                 '}';
+    }
+
+    // METODO CHE AUTOMATIZZA SCADENZA CONSEGNA A 30 GG DALLA DATA DI RITIRO
+
+    public LocalDate setLoanDeadlineReturningDate(LocalDate loanStartingDate) {
+       return loanStartingDate.plusDays(30);
     }
 }
