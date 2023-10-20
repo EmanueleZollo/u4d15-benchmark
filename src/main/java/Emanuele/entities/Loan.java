@@ -92,7 +92,6 @@ public class Loan {
     }
 
     // METODO CHE AUTOMATIZZA SCADENZA CONSEGNA A 30 GG DALLA DATA DI RITIRO
-
     public LocalDate setLoanDeadlineReturningDate(LocalDate loanStartingDate) {
        return loanStartingDate.plusDays(30);
     }
