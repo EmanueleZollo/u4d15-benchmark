@@ -1,10 +1,8 @@
 package Emanuele.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "Utente")
@@ -15,6 +13,9 @@ public class User {
     private String name;
     private String surname;
     private LocalDate birthday;
+
+    @OneToMany(mappedBy = "user")
+    private List<Loan> loans;
 
     public User() {}
 

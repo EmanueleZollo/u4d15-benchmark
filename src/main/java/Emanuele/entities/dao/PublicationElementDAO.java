@@ -32,15 +32,14 @@ public class PublicationElementDAO {
     public PublicationElement findByISBN(long isbn) {
         return em.find(PublicationElement.class, isbn);
     }
-
-    // DISCRIMINANTE PER DISTINGUERE LIBRI DA RIVISTE???
-  /*  public Book findBookByAuthor(long isbn) {
+    // DISCRIMINANTE PER DISTINGUERE LIBRI DA RIVISTE
+   public Book findBookByAuthor(long isbn) {
         return em.find(Book.class, isbn);
     }
 
     public Magazine findMagazineById(long id) {
         return em.find(Magazine.class, id);
-    }*/
+    }
 
     public List<PublicationElement> findAll() {
         // SELECT * FROM PublicationElement

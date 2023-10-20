@@ -14,11 +14,11 @@ public class Loan {
     @GeneratedValue
     private UUID id;
     @ManyToOne
-    @JoinColumn(name = "user_badge_number") // CONTROLLA ASSOCIAZIONE
+    @JoinColumn(name = "user_badgeNumber", nullable = false) // CONTROLLA ASSOCIAZIONE
     private User user;
     @OneToOne
-    @JoinColumn(name = "publication_element_isbn")
-    private PublicationElement publicationElement; // NON SONO SICURO PER NIENTE
+    @JoinColumn(name = "PublicationElement_isbn", nullable = false)
+    private PublicationElement publicationElement; //
     private LocalDate LoanStartingDate;
     private LocalDate LoanDeadlineReturningDate;
     @Nullable
