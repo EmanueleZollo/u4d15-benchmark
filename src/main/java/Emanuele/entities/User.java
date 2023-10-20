@@ -1,5 +1,8 @@
 package Emanuele.entities;
 
+import com.github.javafaker.DateAndTime;
+import com.github.javafaker.Name;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -17,10 +20,9 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Loan> loans;
 
-    public User() {}
+    public User(Name name, Name named, DateAndTime date) {}
 
-    public User(long badgeNumber, String name, String surname, LocalDate birthday) {
-        this.badgeNumber = badgeNumber;
+    public User(String name, String surname, LocalDate birthday) {
         this.name = name;
         this.surname = surname;
         this.birthday = birthday;
@@ -63,4 +65,5 @@ public class User {
                 ", birthday=" + birthday +
                 '}';
     }
+
 }
