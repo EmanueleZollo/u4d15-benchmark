@@ -1,12 +1,12 @@
 package Emanuele.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "Elemento pubblicato")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Table(name = "Pubblicazioni")
+@DiscriminatorColumn(name = "tipo_pubblicazione")
 public abstract class PublicationElement {
 
     @Id

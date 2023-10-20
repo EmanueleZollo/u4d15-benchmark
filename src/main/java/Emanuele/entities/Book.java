@@ -1,10 +1,12 @@
 package Emanuele.entities;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.time.LocalDate;
 
 @Entity
+@DiscriminatorValue("Libro")
 public class Book extends PublicationElement{
     private String author;
     private String genre;

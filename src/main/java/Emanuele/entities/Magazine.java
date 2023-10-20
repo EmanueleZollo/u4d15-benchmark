@@ -1,11 +1,13 @@
 package Emanuele.entities;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import java.time.LocalDate;
 
 @Entity
+@DiscriminatorValue("Rivista")
 public class Magazine extends PublicationElement{
 
     @Enumerated(EnumType.STRING)

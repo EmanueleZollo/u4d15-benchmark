@@ -27,11 +27,13 @@ public class Loan {
 
     public Loan() {}
 
-    public Loan(User user, PublicationElement publicationElement, LocalDate loanStartingDate, LocalDate loanDeadlineReturningDate, LocalDate loanReturningDate) {
+    public Loan(User user, PublicationElement publicationElement, LocalDate loanStartingDate) {
         this.user = user;
         this.publicationElement = publicationElement;
         LoanStartingDate = loanStartingDate;
-        LoanDeadlineReturningDate = loanDeadlineReturningDate;
+    }
+
+    public Loan(LocalDate loanReturningDate) {
         LoanReturningDate = loanReturningDate;
     }
 
@@ -88,7 +90,6 @@ public class Loan {
                 ", publicationElement=" + publicationElement +
                 ", LoanStartingDate=" + LoanStartingDate +
                 ", LoanDeadlineReturningDate=" + LoanDeadlineReturningDate +
-                ", LoanReturningDate=" + LoanReturningDate +
                 '}';
     }
 }
